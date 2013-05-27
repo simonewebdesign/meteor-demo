@@ -27,17 +27,12 @@ if (Meteor.isClient) {
 
     // Submit a new message
     'keypress #message_input' : function (event) {
-      console.log("#message_input keypressed")
-
-      // debug
-      //console.log("maintemplate: ");
-      //console.log(Template.maintemplate);
-
+      // When user presses Enter
       if (event.which === 13) {
-        console.log("pressed enter")
+
         var input = $('#message_input');
         var message = input.val();
-        console.debug(message);
+
         // Create a new message
         Messages.insert({
           text: message,

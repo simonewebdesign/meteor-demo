@@ -8,9 +8,9 @@
 
 <template name="maintemplate">
 
-  <h1>{{h1}}</h1>
+  <h1>{{h1}}</h1>  
 
-  <input id="message_input" type="text" placeholder="Type your message here..." value="{{message_value}}">
+  <input id="message_input" type="text" placeholder="Type your message here...">
 
   <!--
   <button class="insert">Insert</button>
@@ -24,7 +24,9 @@
 </template>
 
 <template name="messages_list">
-    <h2>{{title}}</h2>
+
+  <h2>{{title}}</h2>
+
   {{#each messages}}
     <ul>
       {{> message_info}}
@@ -32,6 +34,7 @@
   {{else}}
     No messages yet. Say hi!
   {{/each}}
+
 </template>
 
 <template name="message_info">
