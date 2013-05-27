@@ -46,3 +46,17 @@
     </small>
   </li>
 </template>
+
+<template name="users_list">
+
+  <h2>{{title}}</h2>
+
+  <ul>
+  {{#each users}}
+    <li>{{name}}</li>
+  {{else}}
+    <li>No users yet. Say hi!</li>
+  {{/each}}
+  </ul>
+
+</template>

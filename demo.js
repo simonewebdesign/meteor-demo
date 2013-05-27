@@ -3,10 +3,30 @@
 Messages = new Meteor.Collection('messages');
 // Messages.insert(text: "Hello, World!!!", time: new Date());
 
+// Meteor Accounts defines a Meteor.users collection where
+// developers can store application-specific user data.
+
+//var currentUser = Meteor.user;
+//var password = "pippo";
+
+//Meteor.loginWithPassword(currentUser, password, function() {
+//  console.log("login successful");
+//});
+
+
 if (Meteor.isClient) {
 
   // -------------------------------------
 
+  // On the client, this function logs in as the
+  // newly created user on successful completion.
+  // http://docs.meteor.com/#accounts_createuser
+  Accounts.createUser({
+    username: "pippo", // A unique name for this user.
+    password: "asdasd"
+  }, function(){
+    console.log("user created");
+  });
 
 
   Template.maintemplate.events({
