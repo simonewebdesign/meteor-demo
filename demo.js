@@ -7,13 +7,16 @@ if (Meteor.isClient) {
 
   // -------------------------------------
 
+
+
   Template.maintemplate.events({
 
     // Add a new message
     'click .insert' : function () {
       // template data, if any, is available in 'this'
       console.log("insert");
-      Messages.insert({text: "FOOBAR", time: new Date()});
+      //Messages.insert({text: "FOOBAR", time: new Date()});
+
     },
 
     // Delete all messages
@@ -26,7 +29,28 @@ if (Meteor.isClient) {
       Messages.remove({}, function() {
         console.log("Everything was removed.");
       });
+    },
+
+    // Submit a new message
+    'keypress #message_input' : function (event) {
+      console.log("#message_input keypressed")
+
+      // debug
+      //console.log("maintemplate: ");
+      //console.log(Template.maintemplate);
+
+      if (event.which === 13) {
+        console.log("pressed enter")
+        var message = $('#message_input').val();
+        console.debug(message);
+        // Create a new message
+        Messages.insert({
+          text: message,
+          time: new Date()
+        });
+      }
     }
+
   });
 
   Template.maintemplate.h1 = function() {
@@ -34,8 +58,12 @@ if (Meteor.isClient) {
   };
 
   Template.maintemplate.created = function() {
-    console.log("template created");
-  }
+    console.log("template 'maintemplate' created");
+  };
+
+  Template.maintemplate.rendered = function() {
+    maintemplate = this;
+  };
 
   // -------------------------------------
 
@@ -52,6 +80,6 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
-    console.log("Server startato. Questo messaggio apparirà sul terminale.");
+    console.log("Server started. This message will appear in the terminal.");
   });
 }
