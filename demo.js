@@ -23,12 +23,6 @@ if (Meteor.isClient) {
     'click .remove' : function () {
       // template data, if any, is available in 'this'
       console.log("remove");
-
-      // You can use this code on server-side only, for security reasons.
-      // This just won't work here.
-      Messages.remove({}, function() {
-        console.log("Everything was removed.");
-      });
     },
 
     // Submit a new message
@@ -41,13 +35,16 @@ if (Meteor.isClient) {
 
       if (event.which === 13) {
         console.log("pressed enter")
-        var message = $('#message_input').val();
+        var input = $('#message_input');
+        var message = input.val();
         console.debug(message);
         // Create a new message
         Messages.insert({
           text: message,
           time: new Date()
         });
+        // Clear
+        input.val("");
       }
     }
 
@@ -81,5 +78,10 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
     console.log("Server started. This message will appear in the terminal.");
+
+    // You can use this code on server-side only, for security reasons.
+    //Messages.remove({}, function() {
+    //  console.log("Everything was removed.");
+    //});
   });
 }

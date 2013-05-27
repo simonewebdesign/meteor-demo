@@ -1,5 +1,5 @@
 <head>
-  <title>meteor demo</title>
+  <title>Messaging App</title>
 </head>
 
 <body>
@@ -11,8 +11,11 @@
   <h1>{{h1}}</h1>
 
   <input id="message_input" type="text" placeholder="Type your message here..." value="{{message_value}}">
+
+  <!--
   <button class="insert">Insert</button>
   <button class="remove">Remove</button>
+  -->
 
   <hr>
 
@@ -33,6 +36,10 @@
 
 <template name="message_info">
   <li>
-    <b>{{text}}</b>, created at <i>{{time}}</i>
+    <b>{{text}}</b> <br>
+
+    <small>
+      <i>{{time}}</i>
+    </small>
   </li>
 </template>
