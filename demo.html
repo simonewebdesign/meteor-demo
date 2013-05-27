@@ -3,25 +3,17 @@
 </head>
 
 <body>
-  {{> hello}}
-  <hr>
-  bo prova
   {{> maintemplate}}  
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" id="clickMe" />
-  <input type="button" value="Click" id="list" />  
-</template>
-
 <template name="maintemplate">
 
-  <h1>{{helloworld}}</h1>
+  <h1>{{h1}}</h1>
 
   <button class="insert">Insert</button>
   <button class="remove">Remove</button>
+
+  <hr>
 
   {{> messages_list}}
 
@@ -40,6 +32,6 @@
 
 <template name="message_info">
   <li>
-    {{text}}, created at {{time}}
+    <b>{{text}}</b>, created at <i>{{time}}</i>
   </li>
 </template>

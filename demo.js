@@ -5,41 +5,7 @@ Messages = new Meteor.Collection('messages');
 
 if (Meteor.isClient) {
 
-  Template.hello.greeting = function () {
-    return "ciao mondo";
-  };
-
-  Template.hello.events({
-    'click #clickMe' : function () {
-      // template data, if any, is available in 'this'
-      console.log(Messages);
-      Messages.insert({text: "Hello, World!!!", time: new Date()});
-    },
-    'click #list' : function () {
-      console.log("You pressed ANOTHER button");
-    }
-  });
-
   // -------------------------------------
-
-  Template.maintemplate.helloworld = function() {
-    return "Hello, World!";
-  };
-
-  Template.maintemplate.created = function() {
-    console.log("template created");
-  }
-
-  // -------------------------------------
-
-  Template.messages_list.title = function() {
-    return "Listing messages";
-  }
-
-  Template.messages_list.messages = function() {
-    return Messages.find({}, {sort: {time: -1}});
-  }
-
 
   Template.maintemplate.events({
 
@@ -63,6 +29,23 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.maintemplate.h1 = function() {
+    return "Messaging App";
+  };
+
+  Template.maintemplate.created = function() {
+    console.log("template created");
+  }
+
+  // -------------------------------------
+
+  Template.messages_list.title = function() {
+    return "Listing messages";
+  }
+
+  Template.messages_list.messages = function() {
+    return Messages.find({}, {sort: {time: -1}});
+  }
 }
 
 
@@ -72,4 +55,3 @@ if (Meteor.isServer) {
     console.log("Server startato. Questo messaggio apparirà sul terminale.");
   });
 }
-
