@@ -17,8 +17,29 @@
 </template>
 
 <template name="maintemplate">
+
   <h1>{{helloworld}}</h1>
+
   <button class="insert">Insert</button>
   <button class="remove">Remove</button>
+
+  {{> messages_list}}
+
 </template>
 
+<template name="messages_list">
+    <h2>{{title}}</h2>
+  {{#each messages}}
+    <ul>
+      {{> message_info}}
+    </ul>
+  {{else}}
+    No messages yet. Say hi!
+  {{/each}}
+</template>
+
+<template name="message_info">
+  <li>
+    {{text}}, created at {{time}}
+  </li>
+</template>
